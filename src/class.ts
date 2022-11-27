@@ -46,7 +46,10 @@ class Admin extends anotherUser {
     // creating the private variable
     private _email: string = "";
 
-    // we cant define new varuable without value, except we build the constructor
+    // creating static variable (this is used to make a call to variable without instanciate the class)
+    static getRoleName: string = 'Admin';
+
+    // we cannot define new varuable without value, except we build the constructor
     phone: string;
 
     constructor(phone: string, name: string, age: number) {
@@ -63,6 +66,10 @@ class Admin extends anotherUser {
         }
     };
 
+    static getRoleNameDesc(): string {
+        return 'This is a Administrator Account.';
+    }
+
     // in set, we cannot define what to return, it is because the set not return anything.
     set email(value: string) {
         if (value.length < 5) {
@@ -77,3 +84,7 @@ class Admin extends anotherUser {
         return this._email;
     }
 };
+
+// we can access the variable without instanciate the object.
+let userRole: string = Admin.getRoleName;
+let userDesc: string = Admin.getRoleNameDesc();
